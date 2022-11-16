@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        System.out.println("Tic Tac Toe [ver. 0.0.1-20221115]");
+        System.out.println("Tic Tac Toe [ver. 0.0.1-20221115(beta)]");
         System.out.println("2022 Kazan Studio.");
         System.out.println("---------------------------------");
 
