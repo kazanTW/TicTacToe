@@ -39,6 +39,39 @@ public class Window extends JFrame implements ActionListener {
         }
         add(board, BorderLayout.CENTER);
 
+        // Add menu bar and menu items
+        JMenuBar menuBar = new JMenuBar();
+
+        JMenu menu = new JMenu("Game");
+        menu.setMnemonic(KeyEvent.VK_G);
+        menuBar.add(menu);
+
+        JMenuItem menuItem = new JMenuItem("New game");
+        //noinspection deprecation
+        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.ALT_MASK));
+        menuItem.getAccessibleContext().setAccessibleDescription("Start a new game");
+        menuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                gameStatus = 0;
+                playerNow = 0;
+                statusLine.setText("It's " + sign[playerNow] + "'s turn.");
+                getContentPane().setBackground(null);
+                for (int i = 0; i < 9; i++) {
+                    buttons[i].setText("");
+                }
+            }
+        });
+        menu.add(menuItem);
+
+        menuItem = new JMenuItem("Quit game");
+        menuItem.setMnemonic(KeyEvent.VK_Q);
+        menuItem.getAccessibleContext().setAccessibleDescription("End game and quit");
+        menuItem.addActionListener(e -> System.exit(0));
+        menu.add(menuItem);
+
+        add(menuBar, BorderLayout.NORTH);
+
         // Add status line
         this.gameStatus = 0;
         this.playerNow = 0;
